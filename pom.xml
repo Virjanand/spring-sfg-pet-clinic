@@ -4,7 +4,7 @@
 
     <groupId>com.virjanand</groupId>
     <artifactId>spring-sfg-pet-clinic</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
 
     <modules>
         <module>pet-clinic-data</module>
@@ -42,6 +42,7 @@
                     <checkModificationExcludes>
                         <checkModificationExclude>pom.xml</checkModificationExclude>
                     </checkModificationExcludes>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
         </plugins>
@@ -49,7 +50,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/Virjanand/spring-sfg-pet-clinic.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>spring-sfg-pet-clinic-0.0.2</tag>
   </scm>
 
 </project>
