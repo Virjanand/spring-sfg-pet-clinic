@@ -2,14 +2,6 @@ package com.virjanand.springsfgpetclinic.services;
 
 import com.virjanand.springsfgpetclinic.model.Owner;
 
-import java.util.Set;
-
-public interface OwnerService {
+public interface OwnerService extends CrudService<Owner, Long> {
     Owner findByLastName(String lastName);
-
-    Owner findeById(Long id);
-
-    Owner save(Owner owner);
-
-    Set<Owner> findAll();
 }
