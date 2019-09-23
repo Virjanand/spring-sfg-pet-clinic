@@ -1,6 +1,7 @@
 package com.virjanand.springsfgpetclinic.bootstrap;
 
 import com.virjanand.springsfgpetclinic.model.Owner;
+import com.virjanand.springsfgpetclinic.model.Pet;
 import com.virjanand.springsfgpetclinic.model.PetType;
 import com.virjanand.springsfgpetclinic.model.Vet;
 import com.virjanand.springsfgpetclinic.services.OwnerService;
@@ -8,6 +9,8 @@ import com.virjanand.springsfgpetclinic.services.PetTypeService;
 import com.virjanand.springsfgpetclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -34,15 +37,35 @@ public class DataLoader implements CommandLineRunner {
         cat.setName("Cat");
         PetType savedCatPetType = petTypeService.save(cat);
 
-        Owner owner1 = new Owner();
-        owner1.setFirstName("Michael");
-        owner1.setLastName("Weston");
+        Owner owner = new Owner();
+        owner.setFirstName("Michael");
+        owner.setLastName("Weston");
+        owner.setAddress("123 Brickerel");
+        owner.setCity("Miami");
+        owner.setTelephone(" 1231231234");
 
-        ownerService.save(owner1);
+        Pet mikesPet = new Pet();
+        mikesPet.setPetType(savedDogPetType);
+        mikesPet.setOwner(owner);
+        mikesPet.setBirthDate(LocalDate.now());
+        mikesPet.setName("Rosco");
+        owner.getPets().add(mikesPet);
+
+        ownerService.save(owner);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Fiona");
         owner2.setLastName("Glenanne");
+        owner2.setAddress("123 Brickerel");
+        owner2.setCity("Miami");
+        owner2.setTelephone(" 1231231234");
+
+        Pet fionasCat = new Pet();
+        fionasCat.setName("Just Cat");
+        fionasCat.setOwner(owner2);
+        fionasCat.setBirthDate(LocalDate.now());
+        fionasCat.setPetType(savedCatPetType);
+        owner2.getPets().add(fionasCat);
 
         ownerService.save(owner2);
 
